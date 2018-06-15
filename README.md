@@ -31,11 +31,11 @@ image, imageresult, video, videoresult, stream and streamresult<br>
 If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
 * it’s possible to create all the above Azure resources using ARM deployment task in VSTS (out of scope).
 <br>
-<b>Code Structure</b>
+<b>Code Structure</b><br>
  source folder – contain the sample code projects<br>
  vsts folder – contain build and release definition which can be import to VSTS project<br>
 <br>
-<b>Function Application Settings</b>
+<b>Function Application Settings</b><br>
 "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"<br>
 "AMSRESTAPIEndpoint": "YOUR_AMS_API_ENDPOINT"<br>
 "AMSClientId": "YOUR_SERVICE_PRINCIPAL_CLIENT_ID"<br>
