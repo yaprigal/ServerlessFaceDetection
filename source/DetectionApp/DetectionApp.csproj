@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <Configurations>Debug;Release;custombuild</Configurations>
+  </PropertyGroup>
+  <ItemGroup>    
+    <PackageReference Include="Microsoft.Azure.Management.Media" Version="1.0.0" />    
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.0" />    
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DocumentDB" Version="1.2.0" />    
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.EventGrid" Version="1.0.0-beta4" />    
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.13" />    
+    <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.4.0" />    
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />    
+    <PackageReference Include="Polly" Version="6.0.1" />    
+    <PackageReference Include="StackExchange.Redis" Version="1.2.6" />    
+    <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />    
+    <PackageReference Include="windowsazure.mediaservices" Version="4.1.0.1" />    
+    <PackageReference Include="windowsazure.mediaservices.extensions" Version="4.1.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+    <None Update="streamconfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

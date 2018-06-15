@@ -1,0 +1,10 @@
+﻿{
+  "Version": "1.0",
+  "Options": {
+    "Mode": "analyze",
+    "DetectionFrameRate": "15",
+    "OptimizeThumbnailGeneration": "true",
+    "PruneRedundantFaces": "false"
+  }
+}
+
