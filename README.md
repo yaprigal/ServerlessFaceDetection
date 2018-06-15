@@ -35,7 +35,7 @@ If you don’t have a Visual Studio Team services account yet, <a href="https://
  source folder – contain the sample code projects<br>
  vsts folder – contain build and release definition which can be import to VSTS project<br>
 <br>
-<b>Function Application Settings</b><br>
+<b>Function Application Settings</b>
 "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"<br>
 "AMSRESTAPIEndpoint": "YOUR_AMS_API_ENDPOINT"<br>
 "AMSClientId": "YOUR_SERVICE_PRINCIPAL_CLIENT_ID"<br>
