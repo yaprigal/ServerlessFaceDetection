@@ -46,9 +46,9 @@ If you don’t have a Visual Studio Team services account yet, <a href="https://
 "copysubclip": "1_IF_YOU_WANT_TO_COPY_STREAM_SUBCLIP_VIDEOS_TO_STREAM_SOURCE_CONTAINER_OTHERWISE_0"<br>
 "eventGridTopicEndpoint": "YOUR_EVENT_GRID_TOPIC_ENDPOINT"<br>
 "eventGridTopicKey": "YOUR_EVENT_GRID_TOPIC_KEY"<br>
-"faceDetectApiUrl": "https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect"<br> (If service hosted in West Europe)
-"faceIdentifyApiUrl": "https://westeurope.api.cognitive.microsoft.com/face/v1.0/identify"<br> (If service hosted in West Europe)
-"facePersonApiUrl": "https://westeurope.api.cognitive.microsoft.com/face/v1.0/largepersongroups"<br> (If service hosted in West Europe)
+"faceDetectApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/detect"<br>
+"faceIdentifyApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/identify"<br>
+"facePersonApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/largepersongroups"<br> 
 "maxNumOfCandidatesReturned": 3<br>
 "myamsconn": "YOUR_AMS_STORAGE_CONNECTION_STRING"<br>
 "myblobconn": "YOUR_STORAGE_CONNECTION_STRING"<br>
