@@ -15,5 +15,54 @@ For live stream scenario, we are going to use the <a href="https://docs.microsof
 Other Azure services that we are using in this solution are: <a href="https://azure.microsoft.com/en-us/services/storage/">Azure Storage</a>, <a href="https://azure.microsoft.com/en-us/services/cache/">Azure Redis Cache</a>, <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction">Azure Cosmos DB</a>, <a href="https://azure.microsoft.com/en-us/services/app-service/">Azure App Service</a>(*out of scope) and <a href="https://azure.microsoft.com/en-us/services/application-insights/">Azure Application Insights</a>. <br><br>
 The Azure Functions deployment will be performed by <a href="https://www.visualstudio.com/team-services/">Visual Studio Team Services (VSTS)</a><br>
 
-<B>Solution Architecture</B><br>
+<B>Solution Architecture</B><br><br>
 ![alt text](https://github.com/yaprigal/ServerlessFaceDetection/blob/master/Capture.PNG)
+<br>
+<b>Prerequisites</b>
+1.	Azure account with the following services (on same region), if you don’t have create a <a href="https://azure.microsoft.com/en-us/free/">free Azure account</a>:<br>
+a.	One Azure Media Services instance with one large person group created and trained as explained here , this group contain the face images to detect<br>
+b.	One Function App instance (consumption plan) with Application Insights associated to it<br>
+c.	One Azure Cosmos DB instance with 3 collections (photo, video, stream) <br>
+d.	One Event Grid Topic instance<br>
+e.	One Azure Redis Cache instance<br>
+f.	One instance of Azure Storage V2 (general purpose v2) with 6 containers, for example:<br>
+image, imageresult, video, videoresult, stream and streamresult<br>
+2.	VSTS account <br>
+If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
+* it’s possible to create all the above Azure resources using ARM deployment task in VSTS (out of scope).
+<br>
+<b>Code Structure</b>
+ source folder – contain the sample code projects<br>
+ vsts folder – contain build and release definition which can be import to VSTS project<br>
+<br>
+<b>Function Application Settings</b><br>
+"AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"<br>
+"AMSRESTAPIEndpoint": "YOUR_AMS_API_ENDPOINT"<br>
+"AMSClientId": "YOUR_SERVICE_PRINCIPAL_CLIENT_ID"<br>
+"AMSClientSecret": "YOUR_SERVICE_PRINCIPAL_CLIENT_SECRET"<br>
+"AMSPreset": "H264 Single Bitrate 1080p"<br>
+"apis": "YOUR_FACE_API_KEYS_SPLITTED_BY_COMMA"<br>
+"confidenceThreshold": 0.5<br>
+"copysubclip": "1_IF_YOU_WANT_TO_COPY_STREAM_SUBCLIP_VIDEOS_TO_STREAM_SOURCE_CONTAINER_OTHERWISE_0"<br>
+"eventGridTopicEndpoint": "YOUR_EVENT_GRID_TOPIC_ENDPOINT"<br>
+"eventGridTopicKey": "YOUR_EVENT_GRID_TOPIC_KEY"<br>
+"faceDetectApiUrl": "https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect"<br>
+"faceIdentifyApiUrl": "https://westeurope.api.cognitive.microsoft.com/face/v1.0/identify"<br>
+"facePersonApiUrl": "https://westeurope.api.cognitive.microsoft.com/face/v1.0/largepersongroups"<br>
+"maxNumOfCandidatesReturned": 3<br>
+"myamsconn": "YOUR_AMS_STORAGE_CONNECTION_STRING"<br>
+"myblobconn": "YOUR_STORAGE_CONNECTION_STRING"<br>
+"myCosmosDBConnection": "YOUR_COSMOSDB_CONNECTION_STRING"<br>
+"myRedis": "YOUR_REDIS_CACHE_CONNECTION_STRING"<br>
+"NotificationSigningKey": "RANDOM_BASE64_ENCODE_STRING"<br>
+"NotificationWebHookEndpoint": "YOUR_FUNCTION_NOTIFICATION_WEBHOOK_ENDPOINT"<br>
+"PREFIX_FILE_NAME": "YOUR_FACE_API_LARGE_GROUP_NAME"<br>
+"resultcontainername": "YOUR_IMAGE_RESULT_CONTAINER_NAME"<br>
+"sourcecontainername": "YOUR_IMAGE_SOURCE_CONTAINER_NAME"<br>
+"streamresultcontainername": "YOUR_STREAM_RESULT_CONTAINER_NAME"<br>
+"streamsourcecontainername": "YOUR_STREAM_SOURCE_CONTAINER_NAME"<br>
+"videoresultcontainername": "YOUR_VIDEO_RESULT_CONTAINER_NAME"<br>
+"videosourcecontainername": "YOUR_VIDEO_SOURCE_CONTAINER_NAME"<br>
+<br>
+
+
