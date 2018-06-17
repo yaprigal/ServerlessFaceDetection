@@ -29,7 +29,6 @@ f.	One instance of Azure Storage V2 (general purpose v2) with 6 containers, for 
 image, imageresult, video, videoresult, stream and streamresult<br>
 2.	VSTS account <br>
 If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
-* it’s possible to create all the above Azure resources using ARM deployment task in VSTS (out of scope).
 <br>
 <b>Code Structure</b><br>
  source folder – contain the sample code projects<br>
