@@ -20,7 +20,7 @@ The Azure Functions deployment will be performed by <a href="https://www.visuals
 <br>
 <b>Prerequisites</b>
 1.	Azure account with the following services (on same region), if you don’t have create a <a href="https://azure.microsoft.com/en-us/free/">free Azure account</a>:<br>
-a.	One Azure Media Services instance with one large person group created and trained as explained here , this group contain the face images to detect<br>
+a.	One Azure Media Services instance with one large person group created and trained as explained <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/how-to-use-large-scale">here</a> , this group contain the face images to detect<br>
 b.	One Function App instance (consumption plan) with Application Insights associated to it<br>
 c.	One Azure Cosmos DB instance with 3 collections (photo, video, stream) <br>
 d.	One Event Grid Topic instance<br>
