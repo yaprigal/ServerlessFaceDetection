@@ -29,8 +29,8 @@ f.	One instance of Azure Storage V2 (general purpose v2) with 6 containers, for 
 image, imageresult, video, videoresult, stream and streamresult<br>
 2.	VSTS account <br>
 If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
-<br>
-<b>Code Structure</b><br>
+
+### 3. Code Structure
  source folder – contain the sample code projects<br>
  vsts folder – contain build and release definition which can be import to VSTS project<br>
 
