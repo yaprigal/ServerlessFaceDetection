@@ -2,10 +2,10 @@
 **** This document is still in progress ****<br>
 Sample code for implementing serverless face detection solution for images, videos and live stream using Azure
 
-<B>The Motivation</B><br>
+## The Motivation
 The main motivation for building this solution is to show how you can integrate between different Azure services to come with one scalable solution that can offer new capabilities to our end users.
 
-<B>The Idea</B><br>
+## The Idea
 This solution show how you can use <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/overview">Azure Face API</a> with <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/overview">Azure Media Services (AMS)</a> to perform face identification on uploaded images, recorded videos and live stream channels. <br>
 We are going to solve the problem by splitting it into small operations (<a href="https://azure.microsoft.com/en-us/services/functions/">Azure Functions</a>) that react to events (<a href="https://azure.microsoft.com/en-us/services/event-grid/">Azure Event Grid</a>). 
 The basic operation flow is to react to a new image upload event, detect the faces and then perform face identification for each of detected faces using <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/how-to-use-large-scale">Face API large group capabilities</a>.<br>
@@ -15,10 +15,10 @@ For live stream scenario, we are going to use the <a href="https://docs.microsof
 Other Azure services that we are using in this solution are: <a href="https://azure.microsoft.com/en-us/services/storage/">Azure Storage</a>, <a href="https://azure.microsoft.com/en-us/services/cache/">Azure Redis Cache</a>, <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction">Azure Cosmos DB</a>, <a href="https://azure.microsoft.com/en-us/services/app-service/">Azure App Service</a>(*out of scope) and <a href="https://azure.microsoft.com/en-us/services/application-insights/">Azure Application Insights</a>. <br><br>
 The Azure Functions deployment will be performed by <a href="https://www.visualstudio.com/team-services/">Visual Studio Team Services (VSTS)</a><br>
 
-<B>Solution Architecture</B><br><br>
+## Solution Architecture
 ![alt text](https://github.com/yaprigal/ServerlessFaceDetection/blob/master/Capture.PNG)
-<br>
-<b>Prerequisites</b>
+
+### 1. Prerequisites
 1.	Azure account with the following services (on same region), if you don’t have create a <a href="https://azure.microsoft.com/en-us/free/">free Azure account</a>:<br>
 a.	One Azure Media Services instance with one large person group created and trained as explained <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/how-to-use-large-scale">here</a> , this group contain the face images to detect<br>
 b.	One Function App instance (consumption plan) with Application Insights associated to it<br>
@@ -33,8 +33,8 @@ If you don’t have a Visual Studio Team services account yet, <a href="https://
 <b>Code Structure</b><br>
  source folder – contain the sample code projects<br>
  vsts folder – contain build and release definition which can be import to VSTS project<br>
-<br>
-<b>Function Application Settings</b><br>
+
+### 2. Function Application Settings
 "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"<br>
 "AMSRESTAPIEndpoint": "YOUR_AMS_API_ENDPOINT"<br>
 "AMSClientId": "YOUR_SERVICE_PRINCIPAL_CLIENT_ID"<br>
