@@ -30,11 +30,11 @@ image, imageresult, video, videoresult, stream and streamresult<br>
 2.	VSTS account <br>
 If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
 
-### 3. Code Structure
+### 2. Code Structure
  source folder – contain the sample code projects<br>
  vsts folder – contain build and release definition which can be import to VSTS project<br>
 
-### 2. Function Application Settings
+### 3. Function Application Settings
 "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"<br>
 "AMSRESTAPIEndpoint": "YOUR_AMS_API_ENDPOINT"<br>
 "AMSClientId": "YOUR_SERVICE_PRINCIPAL_CLIENT_ID"<br>
