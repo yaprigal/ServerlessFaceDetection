@@ -16,8 +16,7 @@ Other Azure services that we are using in this solution are: <a href="https://az
 The Azure Functions deployment will be performed by <a href="https://www.visualstudio.com/team-services/">Visual Studio Team Services (VSTS)</a><br>
 
 ## Solution Architecture
-![alt text](https://github.com/yaprigal/ServerlessFaceDetection/blob/master/Capture.PNG)
-
+![Screen capture](https://github.com/yaprigal/ServerlessFaceDetection/blob/master/Capture.PNG?raw=true)
 ### 1. Prerequisites
 1.	Azure account with the following services (on same region), if you don’t have create a <a href="https://azure.microsoft.com/en-us/free/">free Azure account</a>:<br>
 a.	One Azure Media Services instance with one large person group created and trained as explained <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/how-to-use-large-scale">here</a> , this group contain the face images to detect<br>
@@ -31,8 +30,13 @@ image, imageresult, video, videoresult, stream and streamresult<br>
 If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
 
 ### 2. Code Structure
- source folder – contain the sample code projects<br>
- vsts folder – contain build and release definition which can be import to VSTS project<br>
+ #### 2.1 source folder
+          DetectionApp - Containes the Detection FuncApp source
+          UploadedImages - Test project for testing image upload (simple / bulk)
+          TestImage - The images that will be used by Test project
+ #### 2.2 VSTS folder
+          VSTS Function Build.json - contain build definition that need to imported to VSTS 
+          VSTS Function Release.json - contain release definition that need to import to VSTS project
 
 ### 3. Function Application Settings
 "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"<br>
