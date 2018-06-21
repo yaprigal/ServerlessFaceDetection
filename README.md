@@ -19,12 +19,13 @@ The Azure Functions deployment will be performed by <a href="https://www.visuals
 ![Screen capture](https://github.com/yaprigal/ServerlessFaceDetection/blob/master/Capture.PNG?raw=true)
 ### 1. Prerequisites
 1.	Azure account with the following services (on same region), if you don’t have create a <a href="https://azure.microsoft.com/en-us/free/">free Azure account</a>:<br>
-a.	One Azure Media Services instance with one large person group created and trained as explained <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/how-to-use-large-scale">here</a> , this group contain the face images to detect<br>
-b.	One Function App instance (consumption plan) with Application Insights associated to it<br>
-c.	One Azure Cosmos DB instance with 3 collections (photo, video, stream) <br>
-d.	One Event Grid Topic instance<br>
-e.	One Azure Redis Cache instance<br>
-f.	One instance of Azure Storage V2 (general purpose v2) with 6 containers (private access), for example:<br>
+a.	One Azure Face API instance with one large person group created and trained as explained <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/face-api-how-to-topics/how-to-use-large-scale">here</a> , this group contain the face images to detect<br>
+b. Create an Azure Media Services instance<br>
+c.	One Function App instance (consumption plan) with Application Insights associated to it<br>
+d.	One Azure Cosmos DB instance with 3 collections (photo, video, stream) <br>
+e.	One Event Grid Topic instance<br>
+f.	One Azure Redis Cache instance<br>
+g.	One instance of Azure Storage V2 (general purpose v2) with 6 containers (private access), for example:<br>
 image, imageresult, video, videoresult, stream and streamresult<br>
 2.	VSTS account <br>
 If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
@@ -46,7 +47,7 @@ Under task list, select “Get sources” – choose your forked GitHub project 
 Queue and Build – verify the build completed successfully.<br>
 Import “VSTS Function Release.json” to new release definition – fix the agent queue to be “Hosted VS2017”.
 <br>Select “Dev” environment – choose your Azure subscription, authorize it and choose the function app you created.<br>
-Go to Variables tab – update the values according to below list.<br>
+Go to Variables tab – update the values according to below list, once completed start a new release.<br>
 
 #### Function Application Settings
      "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"
@@ -76,6 +77,7 @@ Go to Variables tab – update the values according to below list.<br>
      "streamsourcecontainername": "YOUR_STREAM_SOURCE_CONTAINER_NAME"
      "videoresultcontainername": "YOUR_VIDEO_RESULT_CONTAINER_NAME"
      "videosourcecontainername": "YOUR_VIDEO_SOURCE_CONTAINER_NAME"
+     * note: "PREFIX_FILE_NAME" – every image/video/live channel has a prefix which define the large group name. e.g. image name: mycam-picture.jpg meaning you need to define a variable with the name: mycam and assigned it the value of face API large group you created.
 
 
 
