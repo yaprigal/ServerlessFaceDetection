@@ -24,10 +24,11 @@ b.	One Function App instance (consumption plan) with Application Insights associ
 c.	One Azure Cosmos DB instance with 3 collections (photo, video, stream) <br>
 d.	One Event Grid Topic instance<br>
 e.	One Azure Redis Cache instance<br>
-f.	One instance of Azure Storage V2 (general purpose v2) with 6 containers, for example:<br>
+f.	One instance of Azure Storage V2 (general purpose v2) with 6 containers (private access), for example:<br>
 image, imageresult, video, videoresult, stream and streamresult<br>
 2.	VSTS account <br>
 If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
+3. Fork this project to your github account
 
 ### 2. Code Structure
  #### 2.1 source folder
@@ -38,34 +39,43 @@ If you don’t have a Visual Studio Team services account yet, <a href="https://
           VSTS Function Build.json - contain build definition that need to imported to VSTS 
           VSTS Function Release.json - contain release definition that need to import to VSTS project
 
-### 3. Function Application Settings
-"AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"<br>
-"AMSRESTAPIEndpoint": "YOUR_AMS_API_ENDPOINT"<br>
-"AMSClientId": "YOUR_SERVICE_PRINCIPAL_CLIENT_ID"<br>
-"AMSClientSecret": "YOUR_SERVICE_PRINCIPAL_CLIENT_SECRET"<br>
-"AMSPreset": "H264 Single Bitrate 1080p"<br>
-"apis": "YOUR_FACE_API_KEYS_SPLITTED_BY_COMMA"<br>
-"confidenceThreshold": 0.5<br>
-"copysubclip": "1_IF_YOU_WANT_TO_COPY_STREAM_SUBCLIP_VIDEOS_TO_STREAM_SOURCE_CONTAINER_OTHERWISE_0"<br>
-"eventGridTopicEndpoint": "YOUR_EVENT_GRID_TOPIC_ENDPOINT"<br>
-"eventGridTopicKey": "YOUR_EVENT_GRID_TOPIC_KEY"<br>
-"faceDetectApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/detect"<br>
-"faceIdentifyApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/identify"<br>
-"facePersonApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/largepersongroups"<br> 
-"maxNumOfCandidatesReturned": 3<br>
-"myamsconn": "YOUR_AMS_STORAGE_CONNECTION_STRING"<br>
-"myblobconn": "YOUR_STORAGE_CONNECTION_STRING"<br>
-"myCosmosDBConnection": "YOUR_COSMOSDB_CONNECTION_STRING"<br>
-"myRedis": "YOUR_REDIS_CACHE_CONNECTION_STRING"<br>
-"NotificationSigningKey": "RANDOM_BASE64_ENCODE_STRING"<br>
-"NotificationWebHookEndpoint": "YOUR_FUNCTION_NOTIFICATION_WEBHOOK_ENDPOINT"<br>
-"PREFIX_FILE_NAME": "YOUR_FACE_API_LARGE_GROUP_NAME"<br>
-"resultcontainername": "YOUR_IMAGE_RESULT_CONTAINER_NAME"<br>
-"sourcecontainername": "YOUR_IMAGE_SOURCE_CONTAINER_NAME"<br>
-"streamresultcontainername": "YOUR_STREAM_RESULT_CONTAINER_NAME"<br>
-"streamsourcecontainername": "YOUR_STREAM_SOURCE_CONTAINER_NAME"<br>
-"videoresultcontainername": "YOUR_VIDEO_RESULT_CONTAINER_NAME"<br>
-"videosourcecontainername": "YOUR_VIDEO_SOURCE_CONTAINER_NAME"<br>
-<br>
+### 3. Setting Up VSTS Environment
+In VSTS create a new project, once created, go to builds tab and choose to import – “VSTS Function Build.json”.
+<br>Select “Hosted VS2017” as agent queue. <br>
+Under task list, select “Get sources” – choose your forked GitHub project as the source control. 
+Queue and Build – verify the build completed successfully.<br>
+Import “VSTS Function Release.json” to new release definition – fix the agent queue to be “Hosted VS2017”.
+<br>Select “Dev” environment – choose your Azure subscription, authorize it and choose the function app you created.<br>
+Go to Variables tab – update the values according to below list.<br>
+
+#### Function Application Settings
+     "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"
+     "AMSRESTAPIEndpoint": "YOUR_AMS_API_ENDPOINT"
+     "AMSClientId": "YOUR_SERVICE_PRINCIPAL_CLIENT_ID"
+     "AMSClientSecret": "YOUR_SERVICE_PRINCIPAL_CLIENT_SECRET"
+     "AMSPreset": "H264 Single Bitrate 1080p"
+     "apis": "YOUR_FACE_API_KEYS_SPLITTED_BY_COMMA"
+     "confidenceThreshold": 0.5
+     "copysubclip": "1_IF_YOU_WANT_TO_COPY_STREAM_SUBCLIP_VIDEOS_TO_STREAM_SOURCE_CONTAINER_OTHERWISE_0"
+     "eventGridTopicEndpoint": "YOUR_EVENT_GRID_TOPIC_ENDPOINT"
+     "eventGridTopicKey": "YOUR_EVENT_GRID_TOPIC_KEY"
+     "faceDetectApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/detect"
+     "faceIdentifyApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/identify"
+     "facePersonApiUrl": "https://YOUR_REGION.api.cognitive.microsoft.com/face/v1.0/largepersongroups"
+     "maxNumOfCandidatesReturned": 3
+     "myamsconn": "YOUR_AMS_STORAGE_CONNECTION_STRING"
+     "myblobconn": "YOUR_STORAGE_CONNECTION_STRING"
+     "myCosmosDBConnection": "YOUR_COSMOSDB_CONNECTION_STRING"
+     "myRedis": "YOUR_REDIS_CACHE_CONNECTION_STRING"
+     "NotificationSigningKey": "RANDOM_BASE64_ENCODE_STRING"
+     "NotificationWebHookEndpoint": "YOUR_FUNCTION_NOTIFICATION_WEBHOOK_ENDPOINT"
+     "PREFIX_FILE_NAME": "YOUR_FACE_API_LARGE_GROUP_NAME"
+     "resultcontainername": "YOUR_IMAGE_RESULT_CONTAINER_NAME"
+     "sourcecontainername": "YOUR_IMAGE_SOURCE_CONTAINER_NAME"
+     "streamresultcontainername": "YOUR_STREAM_RESULT_CONTAINER_NAME"
+     "streamsourcecontainername": "YOUR_STREAM_SOURCE_CONTAINER_NAME"
+     "videoresultcontainername": "YOUR_VIDEO_RESULT_CONTAINER_NAME"
+     "videosourcecontainername": "YOUR_VIDEO_SOURCE_CONTAINER_NAME"
+
 
 
