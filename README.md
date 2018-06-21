@@ -86,38 +86,38 @@ Go to Variables tab – update the values according to below list, once complete
 ### 4. Define Event Grid  
 #### 4.1 Storage events - Go to your deployed function app      
       
-     Select TriggerByImageUploadFunc - click on "Add Event Grid subscription" - give it a name, select 'Storage Account' as topic type, 
-     select the relevant storage (from above 1.g section), uncheck 'Subscribe to all event types', check on 'Blob Created' and 
-     add /blobServices/default/containers/images/blobs/ as Prefix Filter.
+   Select TriggerByImageUploadFunc - click on "Add Event Grid subscription" - give it a name, select 'Storage Account' as topic type, 
+   select the relevant storage (from above 1.g section), uncheck 'Subscribe to all event types', check on 'Blob Created' and 
+   add /blobServices/default/containers/images/blobs/ as Prefix Filter.
             
-     Select TriggerByVideoUploadFunc - repeat previous step, this time just replace the prefix filter to
-     /blobServices/default/containers/video/blobs/
+   Select TriggerByVideoUploadFunc - repeat previous step, this time just replace the prefix filter to
+   /blobServices/default/containers/video/blobs/
       
-     Select TriggerByVideoThumbnail - repeat previous step, this time just replace the prefix filter to
-     /blobServices/default/containers/videoresult/blobs/
+   Select TriggerByVideoThumbnail - repeat previous step, this time just replace the prefix filter to
+   /blobServices/default/containers/videoresult/blobs/
       
-     Select TriggerByStreamThumnail - repeat previous step, this time just replace the prefix filter to
-     /blobServices/default/containers/streamresult/blobs/
+   Select TriggerByStreamThumnail - repeat previous step, this time just replace the prefix filter to
+   /blobServices/default/containers/streamresult/blobs/
  
-     All above assume your container names are images, video, videoresult and streamresult. (see section 1.g)
+   All above assume your container names are images, video, videoresult and streamresult. (see section 1.g)
       
 #### 4.2 Event Subscription 
-     Go to your deployed function app and get the function url of the following functions: EncodeProcessing, RedactorProcessing and
-     CopyFaceProcessing.
+   Go to your deployed function app and get the function url of the following functions: EncodeProcessing, RedactorProcessing and
+   CopyFaceProcessing.
      
-     Go to your deployed Event Grid Topic to add a new Event Subscription.
+   Go to your deployed Event Grid Topic to add a new Event Subscription.
      
-     Create Event Subscription for EncodeProcessing
-     Uncheck 'Subscribe to all event types', add Event Type 'encode', select Web Hook as Endpoint Type, put as endpoint the URL of
-     EncodeProcessing function, give it a name as click on Create.
+   Create Event Subscription for EncodeProcessing
+   Uncheck 'Subscribe to all event types', add Event Type 'encode', select Web Hook as Endpoint Type, put as endpoint the URL of
+   EncodeProcessing function, give it a name as click on Create.
      
-     Create Event Subscription for RedactorProcessing
-     Uncheck 'Subscribe to all event types', add Event Type 'redactor', select Web Hook as Endpoint Type, put as endpoint the URL of
-     RedactorProcessing function, give it a name as click on Create.
+   Create Event Subscription for RedactorProcessing
+   Uncheck 'Subscribe to all event types', add Event Type 'redactor', select Web Hook as Endpoint Type, put as endpoint the URL of
+   RedactorProcessing function, give it a name as click on Create.
      
-     Create Event Subscription for RedactorProcessing
-     Uncheck 'Subscribe to all event types', add Event Type 'copy', select Web Hook as Endpoint Type, put as endpoint the URL of
-     CopyFaceProcessing function, give it a name as click on Create.
+   Create Event Subscription for RedactorProcessing
+   Uncheck 'Subscribe to all event types', add Event Type 'copy', select Web Hook as Endpoint Type, put as endpoint the URL of
+   CopyFaceProcessing function, give it a name as click on Create.
      
      
      
