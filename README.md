@@ -33,12 +33,12 @@ If you don’t have a Visual Studio Team services account yet, <a href="https://
 
 ### 2. Code Structure
  #### 2.1 source folder
-          DetectionApp - Containes the Detection FuncApp source
-          UploadedImages - Test project for testing image upload (simple / bulk)
-          TestImage - The images that will be used by Test project
+      DetectionApp - Containes the Detection FuncApp source
+      UploadedImages - Test project for testing image upload (simple / bulk)
+      TestImage - The images that will be used by Test project
  #### 2.2 VSTS folder
-          VSTS Function Build.json - contain build definition that need to imported to VSTS 
-          VSTS Function Release.json - contain release definition that need to import to VSTS project
+      VSTS Function Build.json - contain build definition that need to imported to VSTS 
+      VSTS Function Release.json - contain release definition that need to import to VSTS project
 
 ### 3. Setting Up VSTS Environment
 In VSTS create a new project, once created, go to builds tab and choose to import – “VSTS Function Build.json”.
@@ -49,7 +49,7 @@ Import “VSTS Function Release.json” to new release definition – fix the ag
 <br>Select “Dev” environment – choose your Azure subscription, authorize it and choose the function app you created.<br>
 Go to Variables tab – update the values according to below list, once completed start a new release deployment.<br>
 
-#### Function Application Settings
+#### 3.1 Function Application Settings
      "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"
      "AMSRESTAPIEndpoint": "YOUR_AMS_API_ENDPOINT"
      "AMSClientId": "YOUR_SERVICE_PRINCIPAL_CLIENT_ID"
@@ -84,20 +84,41 @@ Go to Variables tab – update the values according to below list, once complete
      "NotificationSigningKey " – generated base64 string
      
 ### 4. Define Event Grid  
- #### 4.1 Storage events - Go to your deployed function app      
+#### 4.1 Storage events - Go to your deployed function app      
       
-      Select TriggerByImageUploadFunc - click on "Add Event Grid subscription" - give it a name, select 'Storage Account' as topic type, 
-      select the relevant storage (from above 1.g section), uncheck 'Subscribe to all event types', check on 'Blob Created' and 
-      add /blobServices/default/containers/images/blobs/ as Prefix Filter.
+     Select TriggerByImageUploadFunc - click on "Add Event Grid subscription" - give it a name, select 'Storage Account' as topic type, 
+     select the relevant storage (from above 1.g section), uncheck 'Subscribe to all event types', check on 'Blob Created' and 
+     add /blobServices/default/containers/images/blobs/ as Prefix Filter.
             
-      Select TriggerByVideoUploadFunc - repeat previous step, this time just replace the prefix filter to
-      /blobServices/default/containers/video/blobs/
+     Select TriggerByVideoUploadFunc - repeat previous step, this time just replace the prefix filter to
+     /blobServices/default/containers/video/blobs/
       
-      Select TriggerByVideoThumbnail - repeat previous step, this time just replace the prefix filter to
-      /blobServices/default/containers/videoresult/blobs/
+     Select TriggerByVideoThumbnail - repeat previous step, this time just replace the prefix filter to
+     /blobServices/default/containers/videoresult/blobs/
       
-      Select TriggerByStreamThumnail - repeat previous step, this time just replace the prefix filter to
-      /blobServices/default/containers/streamresult/blobs/
+     Select TriggerByStreamThumnail - repeat previous step, this time just replace the prefix filter to
+     /blobServices/default/containers/streamresult/blobs/
  
-      All above assume your container names are images, video, videoresult and streamresult. (see section 1.g)
-
+     All above assume your container names are images, video, videoresult and streamresult. (see section 1.g)
+      
+#### 4.2 Event Subscription 
+     Go to your deployed function app and get the function url of the following functions: EncodeProcessing, RedactorProcessing and
+     CopyFaceProcessing.
+     
+     Go to your deployed Event Grid Topic to add a new Event Subscription.
+     
+     Create Event Subscription for EncodeProcessing
+     Uncheck 'Subscribe to all event types', add Event Type 'encode', select Web Hook as Endpoint Type, put as endpoint the URL of
+     EncodeProcessing function, give it a name as click on Create.
+     
+     Create Event Subscription for RedactorProcessing
+     Uncheck 'Subscribe to all event types', add Event Type 'redactor', select Web Hook as Endpoint Type, put as endpoint the URL of
+     RedactorProcessing function, give it a name as click on Create.
+     
+     Create Event Subscription for RedactorProcessing
+     Uncheck 'Subscribe to all event types', add Event Type 'copy', select Web Hook as Endpoint Type, put as endpoint the URL of
+     CopyFaceProcessing function, give it a name as click on Create.
+     
+     
+     
+     
