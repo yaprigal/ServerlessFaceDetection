@@ -77,7 +77,8 @@ Go to Variables tab – update the values according to below list, once complete
      "streamsourcecontainername": "YOUR_STREAM_SOURCE_CONTAINER_NAME"
      "videoresultcontainername": "YOUR_VIDEO_RESULT_CONTAINER_NAME"
      "videosourcecontainername": "YOUR_VIDEO_SOURCE_CONTAINER_NAME"
-     * note: "PREFIX_FILE_NAME" – every image/video/live channel has a prefix which define the large group name. e.g. image name: mycam-picture.jpg meaning you need to define a variable with the name: mycam and assigned it the value of face API large group you created.
+     * note: "PREFIX_FILE_NAME" – every image/video/live channel has a prefix which define the large group name. 
+     e.g. image name: mycam-picture.jpg means you need to define a variable with the name: mycam and assigned it the value of face API large group you created.
 
 
 
