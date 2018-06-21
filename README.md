@@ -47,7 +47,7 @@ Under task list, select “Get sources” – choose your forked GitHub project 
 Queue and Build – verify the build completed successfully.<br>
 Import “VSTS Function Release.json” to new release definition – fix the agent queue to be “Hosted VS2017”.
 <br>Select “Dev” environment – choose your Azure subscription, authorize it and choose the function app you created.<br>
-Go to Variables tab – update the values according to below list, once completed start a new release.<br>
+Go to Variables tab – update the values according to below list, once completed start a new release deployment.<br>
 
 #### Function Application Settings
      "AMSAADTenantDomain": "YOUR_TENANT_DOMAIN.onmicrosoft.com"
@@ -77,8 +77,27 @@ Go to Variables tab – update the values according to below list, once complete
      "streamsourcecontainername": "YOUR_STREAM_SOURCE_CONTAINER_NAME"
      "videoresultcontainername": "YOUR_VIDEO_RESULT_CONTAINER_NAME"
      "videosourcecontainername": "YOUR_VIDEO_SOURCE_CONTAINER_NAME"
-     * note: "PREFIX_FILE_NAME" – every image/video/live channel has a prefix which define the large group name. 
+     * notes: 
+     "PREFIX_FILE_NAME" – every image/video/live channel has a prefix which define the large group name. 
      e.g. image name: mycam-picture.jpg means you need to define a variable with the name: mycam and assigned it the value of face API large group you created.
-
-
+     "NotificationWebHookEndpoint" – you will need to take this value after your first deployment – go to your deployed function app –> NotificationWebhook – get function URL
+     "NotificationSigningKey " – generated base64 string
+     
+### 4. Define Event Grid  
+ #### 4.1 Storage events - Go to your deployed function app      
+      
+      Select TriggerByImageUploadFunc - click on "Add Event Grid subscription" - give it a name, select 'Storage Account' as topic type, 
+      select the relevant storage (from above 1.g section), uncheck 'Subscribe to all event types', check on 'Blob Created' and 
+      add /blobServices/default/containers/images/blobs/ as Prefix Filter.
+            
+      Select TriggerByVideoUploadFunc - repeat previous step, this time just replace the prefix filter to
+      /blobServices/default/containers/video/blobs/
+      
+      Select TriggerByVideoThumbnail - repeat previous step, this time just replace the prefix filter to
+      /blobServices/default/containers/videoresult/blobs/
+      
+      Select TriggerByStreamThumnail - repeat previous step, this time just replace the prefix filter to
+      /blobServices/default/containers/streamresult/blobs/
+ 
+      All above assume your container names are images, video, videoresult and streamresult. (see section 1.g)
 
