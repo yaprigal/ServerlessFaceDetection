@@ -82,6 +82,7 @@ Go to Variables tab – update the values according to below list, once complete
      e.g. image name: mycam-picture.jpg means you need to define a variable with the name: mycam and assigned it the value of face API large group you created.
      "NotificationWebHookEndpoint" – you will need to take this value after your first deployment – go to your deployed function app –> NotificationWebhook – get function URL
      "NotificationSigningKey " – generated base64 string
+     “apis” - you can create more than one Face API as it might that the current limitation of Face API of 10 transactions per second not sufficient you. (although resiliency strategy implemented, you might experience longer function completion time in case of heavy load)
      
 ### 4. Define Event Grid  
 #### 4.1 Storage events      
@@ -114,7 +115,7 @@ Go to Variables tab – update the values according to below list, once complete
      
    Create Event Subscription for RedactorProcessing
    Uncheck 'Subscribe to all event types', add Event Type 'redactor', select Web Hook as Endpoint Type, put as endpoint the URL of
-   RedactorProcessing function, give it a name as click on Create.
+   RedactorProcessing function, give it a name as click on Create.h
      
    Create Event Subscription for RedactorProcessing
    Uncheck 'Subscribe to all event types', add Event Type 'copy', select Web Hook as Endpoint Type, put as endpoint the URL of
