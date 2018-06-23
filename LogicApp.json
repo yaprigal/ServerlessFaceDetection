@@ -13,7 +13,7 @@
     },
     "logicAppLocation": {
       "type": "string",
-      "defaultValue": "[resourceGroup().location]",
+      "defaultValue": "westeurope",
       "allowedValues": [
         "[resourceGroup().location]",
         "eastasia",
