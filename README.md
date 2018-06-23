@@ -84,8 +84,9 @@ Go to Variables tab – update the values according to below list, once complete
      "NotificationSigningKey " – generated base64 string
      
 ### 4. Define Event Grid  
-#### 4.1 Storage events - Go to your deployed function app      
+#### 4.1 Storage events      
       
+   Go to your deployed function app ->
    Select TriggerByImageUploadFunc - click on "Add Event Grid subscription" - give it a name, select 'Storage Account' as topic type, 
    select the relevant storage (from above 1.g section), uncheck 'Subscribe to all event types', check on 'Blob Created' and 
    add /blobServices/default/containers/images/blobs/ as Prefix Filter.
@@ -101,7 +102,7 @@ Go to Variables tab – update the values according to below list, once complete
  
    All above assume your container names are images, video, videoresult and streamresult. (see section 1.g)
       
-#### 4.2 Event Subscription 
+#### 4.2 Event Topic Subscription 
    Go to your deployed function app and get the function url of the following functions: EncodeProcessing, RedactorProcessing and
    CopyFaceProcessing.
      
@@ -118,7 +119,14 @@ Go to Variables tab – update the values according to below list, once complete
    Create Event Subscription for RedactorProcessing
    Uncheck 'Subscribe to all event types', add Event Type 'copy', select Web Hook as Endpoint Type, put as endpoint the URL of
    CopyFaceProcessing function, give it a name as click on Create.
-     
-     
+
+### 5. Load Azure Redis Cache
+   Redis Cache contains person id and person name as the key-value store per Face API deployed.<br>
+   To load the values into your deployed Redis Cache you should call the deployed “LoadPersonGroup” function when passing as ‘personid’ 
+   the name of the person group that you created in your face API (step 1.a).<br>
+   e.g. https://YOUR_FUNCTION_URL/LoadPersonGroup?groupid=YOUR_FACE_API_LARGE_GROUP_NAME
+   
+   Note: this operation will go over all your configured ‘apis’
+
      
      
