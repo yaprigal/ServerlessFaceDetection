@@ -128,6 +128,13 @@ Go to Variables tab – update the values according to below list, once complete
    e.g. https://YOUR_FUNCTION_URL/LoadPersonGroup?groupid=YOUR_FACE_API_LARGE_GROUP_NAME
    
    Note: this operation will go over all your configured ‘apis’
+### 6. Deploy Azure Logic App
+   This template creates a Logic app which processes a live program (from a live channel in Azure Media Services) for media analytics.
+   It's sub-clipping the last given interval and processing a 'redactor' analysis on the sub-clipping output.
+   
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2yaprigal%2FServerlessFaceDetection%2Fmaster%2FLogicApp.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+</a>
 
      
      
