@@ -132,7 +132,7 @@ Go to Variables tab – update the values according to below list, once complete
    This template creates a Logic app which processes a live program (from a live channel in Azure Media Services) for media analytics.
    It's sub-clipping the last given interval and processing a 'redactor' analysis on the sub-clipping output.
    
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2yaprigal%2FServerlessFaceDetection%2Fmaster%2FLogicApp.json" target="_blank">
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fyaprigal%2FServerlessFaceDetection%2Fmaster%2FLogicApp.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
