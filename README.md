@@ -30,6 +30,7 @@ image, imageresult, video, videoresult, stream and streamresult<br>
 2.	VSTS account <br>
 If you don’t have a Visual Studio Team services account yet, <a href="https://go.microsoft.com/fwlink/?LinkId=307137">open one now</a> 
 3. Fork this project to your github account
+4.	Alternative for step 2 and 3, is to deploy the function app using Visual Studio 2017 with Azure Functions tools extension – see <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs">here</a> for more information 
 
 ### 2. Code Structure
  #### 2.1 source folder
