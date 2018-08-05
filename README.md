@@ -1,5 +1,4 @@
 # Serverless Face Detection using Azure
-**** This document is still in progress ****<br>
 Sample code for implementing serverless face detection solution for images, videos and live stream using Azure
 
 ## The Motivation
