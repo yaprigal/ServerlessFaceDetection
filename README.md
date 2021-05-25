@@ -2,7 +2,7 @@
 Sample code for implementing serverless face detection solution for images, videos and live stream using Azure
 
 ## The Motivation
-The main motivation for building this solution is to show how you can integrate between different Azure services to come with one scalable solution that can offer new capabilities to our end users.
+This is a serverless project build using Azure Functions, Azure CosmosDB (NoSQL), Azure Redis Cache for implementing serverless face detection solution for images, videos and live stream.
 
 ## The Idea
 This solution show how you can use <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/overview">Azure Face API</a> with <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/face/overview">Azure Media Services (AMS)</a> to perform face identification on uploaded images, recorded videos and live stream channels. <br>
